@@ -3,3 +3,16 @@ title: "sds192_miniproject4"
 output: html_document
 ---
 
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+library(tidyverse)
+library(RMySQL)
+
+db <- dbConnect(MySQL(), 
+                host = "scidb.smith.edu", 
+                user = "mth292", 
+                password = "RememberPi", 
+                dbname = "imdb")
+
+knitr::opts_chunk$set(connection = db, max.print = 20)
+```
+
