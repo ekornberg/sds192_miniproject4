@@ -4,6 +4,7 @@ author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
 output: html_document
 code_folding: hide
 ---
+#Correlation between the imdb rating of a movie and the female representation in the same. Based on XXXX feminist movie viewing test. 
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
