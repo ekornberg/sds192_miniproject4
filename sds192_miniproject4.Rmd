@@ -4,6 +4,7 @@ author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
 output: html_document
 code_folding: hide
 ---
+
 #Correlation between the imdb rating of a movie and the female representation in the same. Based on XXXX feminist movie viewing test. 
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
@@ -108,4 +109,13 @@ WHERE mi.info_type_id IN (67, 97)
 ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
+
+```{r warning = FALSE, message = FALSE, echo = FALSE}
+library(ggplot2)
+```
+
+```{r}
+ggplot()
+```
+
 
