@@ -4,16 +4,12 @@ author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
 output: html_document
 code_folding: hide
 ---
-<<<<<<< HEAD
 
-#Correlation between the imdb rating of a movie and the female representation in the same. Based on XXXX feminist movie viewing test. 
-=======
 #Correlation between the imdb rating of a movie and the female representation in the same. Based on the Mako Mori feminist movie viewing test. 
 
 ##What is the Mako Mori Test?
 Named after a "Pacific Rim" character, the Mako Mori test proposes an alternative to the Bechdel test. This test focuses not on women conversing with each other, but with the story of at least one woman. The rules of the test are that the movie must have at least one female character, that character must get her own narrative arc, and the arc cannot be about the man's story. While people still argue over whether or not "Pacific Rim" was feminist or not, the test hold a great potential. Think about female characters you've seen in movies recently, how many of them had stories outside being romantically involved with the male lead?
 
->>>>>>> c482a0849b1e9efa8eaeba0a4100b1d212ffcfc5
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
