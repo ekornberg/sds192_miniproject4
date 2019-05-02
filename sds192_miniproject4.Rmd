@@ -79,6 +79,7 @@ ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
 
+<<<<<<< HEAD
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(ggplot2)
 ```
@@ -88,3 +89,6 @@ ggplot()
 ```
 
 
+=======
+mako_mori_plot <- ggplot()
+>>>>>>> 3cc67aaac0ad1a29248a6e8219cb20803630b5e2
