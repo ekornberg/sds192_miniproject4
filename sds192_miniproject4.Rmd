@@ -4,6 +4,7 @@ author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
 output: html_document
 code_folding: hide
 ---
+
 #Correlation between the imdb rating of a movie and the female representation in the same. Based on the Mako Mori feminist movie viewing test. 
 
 ##What is the Mako Mori Test?
@@ -77,3 +78,4 @@ ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
 
+mako_mori_plot <- ggplot()
