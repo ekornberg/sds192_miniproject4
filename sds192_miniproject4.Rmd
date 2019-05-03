@@ -62,11 +62,12 @@ LIMIT 0,10;
 
 #2016
 ```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
-SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating, n.gender
 FROM title t 
 JOIN movie_info mi ON mi.movie_id = t.id
 JOIN movie_info mi2 ON mi2.movie_id = t.id
 JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+JOIN name n ON n.md5sum = t.md5sum
 WHERE mi.info_type_id IN (67, 97) 
   AND mi.info LIKE '%PG-13%'
   AND kind_id = 1
@@ -78,9 +79,19 @@ ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
 
+<<<<<<< HEAD
 ```{r}
 ratings <- read_csv(here::here("Movie_test.csv"))
 ```
 
 
+=======
+```{r warning = FALSE, message = FALSE, echo = FALSE}
+library(ggplot2)
+```
+
+
+
+>>>>>>> 28ebeed699baaf584356eb637e21b3e4fd4de0cb
 mako_mori_plot <- ggplot()
+
