@@ -78,4 +78,9 @@ ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
 
+```{r}
+ratings <- read_csv(here::here("Movie_test.csv"))
+```
+
+
 mako_mori_plot <- ggplot()
