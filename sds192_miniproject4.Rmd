@@ -79,19 +79,15 @@ ORDER BY movie_rating DESC
 LIMIT 0,10;
 ```
 
-<<<<<<< HEAD
 ```{r}
 ratings <- read_csv(here::here("Movie_test.csv"))
 ```
 
 
-=======
+
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(ggplot2)
 ```
 
 
-
->>>>>>> 28ebeed699baaf584356eb637e21b3e4fd4de0cb
-mako_mori_plot <- ggplot()
 
