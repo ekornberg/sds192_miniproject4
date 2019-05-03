@@ -91,13 +91,21 @@ ratings <- read_csv(here::here("Movie_test.csv"))
 
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
-new_ratings <- as.tbl(ratings) %>% 
-  filter( year == 2000) 
-  
-  
-new_plot <- ggplot(new_ratings, aes(x=title, y= 'imdb rating'))+
-  geom_col() 
+new_df <- Movie_test2 %>%
+  filter(year == 2000)%>%
+  filter(title == c("X-Men", "Chocolat")) %>%
+  mutate(test = TRUE)
 
-new_plot  
+new_df1 <- Movie_test2 %>%
+  filter(year == 2000)%>%
+  filter(title == c("Cast Away", "Coping", "O Brother, Where Art Thou?", "The Ballad of Ramblin’ Jack", "Billy Elliot", "Best in Show", "Big Eden", "Frequency")) %>%
+  mutate(test = FALSE)
+
+new_plot <- ggplot(data = new_df, aes(x=title, y='rating', fill = 'test')) +
+  geom_col(fill = "blue")+
+  geom_col(data = new_df1, aes(x=title, y='rating', fill = 'test'), fill="red")
+
+new_plot
+
 ```
 
