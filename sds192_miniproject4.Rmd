@@ -96,9 +96,13 @@ ratings <- read_csv(here::here("Movie_test.csv"))
 
 
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
-library(ggplot2)
+new_ratings <- as.tbl(ratings) %>% 
+  filter( year == 2000) 
+  
+  
+new_plot <- ggplot(new_ratings, aes(x=title, y= 'imdb rating'))+
+  geom_col() 
+
+new_plot  
 ```
-
-
-
 
