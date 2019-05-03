@@ -5,7 +5,7 @@ output: html_document
 code_folding: hide
 ---
 
-#Correlation between the imdb rating of a movie and the female representation in the same. Based on the Mako Mori feminist movie viewing test. 
+#Hey Hollywood, where are the women? 
 
 ##What is the Mako Mori Test?
 Named after a "Pacific Rim" character, the Mako Mori test proposes an alternative to the Bechdel test. This test focuses not on women conversing with each other, but with the story of at least one woman. The rules of the test are that the movie must have at least one female character, that character must get her own narrative arc, and the arc cannot be about the man's story. While people still argue over whether or not "Pacific Rim" was feminist or not, the test hold a great potential. Think about female characters you've seen in movies recently, how many of them had stories outside being romantically involved with the male lead?
@@ -19,6 +19,7 @@ DOES NOT PASS!!!
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
 library(RMySQL)
+library(here)
 
 db <- dbConnect(MySQL(), 
                 host = "scidb.smith.edu", 
@@ -89,10 +90,10 @@ ratings <- read_csv(here::here("Movie_test.csv"))
 ```
 
 
-
 ```{r warning = FALSE, message = FALSE, echo = FALSE}
 library(ggplot2)
 ```
+
 
 
 
