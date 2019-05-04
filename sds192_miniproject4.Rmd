@@ -10,32 +10,6 @@ code_folding: hide
 
 Date: `r format(Sys.Date(), "%B %e, %Y")`
 
-  In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the [first female speaker of the House](https://www.history.com/this-day-in-history/nancy-pelosi-named-speaker-of-the-house-2004), while in 2016, Hillary Clinton became the [first female presidential candidate](https://www.nbcnews.com/storyline/2016-conventions/hillary-clinton-becomes-first-female-nominee-major-u-s-political-n617406) nominated by a major political party. In 2009, the [Lilly Ledbetter Fair Pay Restoration Act](http://lillyledbetter.com/) helped women file government complaints for pay discrimination, and in 2013, [women first entered combat positions](https://www.nytimes.com/2013/01/24/us/pentagon-says-it-is-lifting-ban-on-women-in-combat.html) in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media. However, this is not the case. 
-
-  Pixar did not have a film with a [female lead until 2012](http://reelgirl.com/2011/07/coming-in-2012-pixars-first-female-lead-25-year-history/). In 2017, only 31.8% characters in the top 100 films were [female speaking roles](http://assets.uscannenberg.org/docs/inequality-in-1100-popular-films.pdf). According to a recent US study, the female to male role ratio is [1:3 in family friendly films](https://www.theguardian.com/women-in-leadership/2013/nov/12/media-representation-matters). In this, only 4.5% of those females represented held positions of political power. As filmmaker [Rebecca Brand writes](https://www.theguardian.com/women-in-leadership/2013/nov/12/media-representation-matters) for The Guardian, “[The people we see on screen] help to shape who we are, who we aspire to be, and how we view the world around us.” She suggests, “if she can't see it, she can't be it.” While this is not entirely true, Brand’s statement does carry some weight -- if young girls do not see examples of women doing amazing things, how would they know that these opportunities are available to them? How can they continue the fight for equality?
-
-  Some believe that media representation is frivolous and unnecessary. They claim that filmmakers’ [artificial insertion](https://burrunjor.com/2016/12/03/why-representation-doesnt-matter-and-saying-it-does-is-harmful/) of women into movies is simply a display of pandering. They say that with today’s meritocracy, we already have equality and that we do not need to force diversity. Some more progressive critics even argue that legislation and systemic change is much [more important than media representation](https://metro.co.uk/2018/03/22/representation-in-film-and-tv-isnt-enough-to-empower-minorities-7386618/). 
-
-  However, depicting women in movies is not forced diversity -- it is a reflection of actual everyday life in which women make up more than half of the population. Given the continued lack of representation of women in media, politics, and other central institutions of power, equality is still very much in the distance. This even more so for [females of other minority groups](https://www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d), including women of color, disabled women, LGBTQ+ women, low-income women, etc. Furthermore, while it cannot be denied that legislation and systemic change is incredibly important, it cannot be denied that who we see on screen affects how we see ourselves and others. With this, many believe that the two go hand in hand -- positive systemic progress brings about positive media representation, which in turn promotes further systemic change. 
-
-  Now, more than ever, positive and intersectional female representation is incredibly important. While it should not take away from making systemic change, it should also not be dismissed from attention. When media already shapes the minds of young and impressionable consumers, why not shape them in a way that empowers them and leads to real, everyday change?
-
-
-
-
-
-
-
-
-##What is the Mako Mori Test?
-Named after a "Pacific Rim" character, the Mako Mori test proposes an alternative to the Bechdel test. This test focuses not on women conversing with each other, but with the story of at least one woman. The rules of the test are that the movie must have at least one female character, that character must get her own narrative arc, and the arc cannot be about the man's story. While people still argue over whether or not "Pacific Rim" was feminist or not, the test hold a great potential. Think about female characters you've seen in movies recently, how many of them had stories outside being romantically involved with the male lead?
-
-PASSES!!!
-<iframe width="679" height="382" src="https://www.youtube.com/embed/SL_YMm9C6tw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-DOES NOT PASS!!! 
-<iframe width="679" height="382" src="https://www.youtube.com/embed/_dl2L4v6ecM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
 library(RMySQL)
@@ -49,64 +23,6 @@ db <- dbConnect(MySQL(),
                 dbname = "imdb")
 
 knitr::opts_chunk$set(connection = db, max.print = 20)
-```
-
-#2000
-```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
-SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
-FROM title t 
-JOIN movie_info mi ON mi.movie_id = t.id
-JOIN movie_info mi2 ON mi2.movie_id = t.id
-JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
-WHERE mi.info_type_id IN (67, 97) 
-  AND mi.info LIKE '%PG-13%'
-  AND kind_id = 1
-  AND mi2.info_type_id = 4
-  AND mi3.info_type_id = 101
-  AND mi2.info = 'English'
-  AND production_year = 2000
-ORDER BY movie_rating DESC
-LIMIT 0,10;
-```
-
-#2008
-```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
-SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
-FROM title t 
-JOIN movie_info mi ON mi.movie_id = t.id
-JOIN movie_info mi2 ON mi2.movie_id = t.id
-JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
-WHERE mi.info_type_id IN (67, 97) 
-  AND mi.info LIKE '%PG-13%'
-  AND kind_id = 1
-  AND mi2.info_type_id = 4
-  AND mi3.info_type_id = 101
-  AND mi2.info = 'English'
-  AND production_year = 2008
-ORDER BY movie_rating DESC
-LIMIT 0,10;
-```
-
-#2016
-```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
-SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
-FROM title t 
-JOIN movie_info mi ON mi.movie_id = t.id
-JOIN movie_info mi2 ON mi2.movie_id = t.id
-JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
-WHERE mi.info_type_id IN (67, 97) 
-  AND mi.info LIKE '%PG-13%'
-  AND kind_id = 1
-  AND mi2.info_type_id = 4
-  AND mi3.info_type_id = 101
-  AND mi2.info = 'English'
-  AND production_year = 2016
-ORDER BY movie_rating DESC
-LIMIT 0,10;
-```
-
-```{r}
-ratings <- read_csv(here::here("Movie_test.csv"))
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
@@ -169,12 +85,64 @@ new_df3 <- df3 %>%
   mutate(pass_test = c("TRUE", "FALSE", "TRUE", "TRUE", "TRUE", "FALSE", "TRUE", "TRUE", "FALSE", "TRUE"))
 ```
 
+
+ In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the first female speaker of the House, while in 2016, Hillary Clinton became the first female presidential candidate nominated by a major political party. In 2009, the Lilly Ledbetter Fair Pay Restoration Act helped women file government complaints for pay discrimination, and in 2013, women first entered combat positions in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media and increased appreciation for such forms of entertainment. Does this hold true in reality? 
+
+
+Let us consider the top ten PG-13 rated movies produced in the years 2000, 2008 and 2016, from the [Internet Movie Database](https://www.imdb.com/pressroom/about/), or the imdb. Given that media representation most affects young, developing minds, PG-13 rated movies are integral to this investigation as their target audience, middle school-aged teenagers, are beginning to explore their sexuality and identity. With this, female representation in popular media is deeply influential in the [development of the sense of self] (https://www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d). Furthermore, the way women are represented in these movies affects how young females view themselves and how young males view them, bringing the issue into the real world. As we examine today’s media representation and its change over time, the three years of focus are key because they are each roughly a generation apart, and can thus help assess the progress made. 
+Female representation, however, is a rather subject concept. So, to determine whether movies portray women with substantial importance, we refer to the [Mako Mori Test](www.dailydot.com/parsec/fandom/mako-mori-test-bechdel-pacific-rim/). Named after a Pacific Rim character, the Mako Mori test proposes an alternative to the popular Bechdel test. This test focuses not on women conversing with each other as the Bechdel test does, but on the story of at least one woman. The rules of the test are that (1) the movie must have at least one female character, (2) that character must get her own narrative arc, and (3) the arc cannot be dependent on the man’s story. While people still argue over whether or not “Pacific Rim” was feminist or not, the test has great potential. 
+For example, Emma Stone’s character from the 2016 movie La La Land passes the test as she has an independent narrative arc which focuses on her ambitions to be an actor. Here’s a scene from the movie showing this:
+
+<iframe width="679" height="382" src="https://www.youtube.com/embed/SL_YMm9C6tw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+However, the movie O Brother Where Art Thou? fails the test. As shown in the scene below, the women do nothing more than seduce the male protagonists of the movie and do not have independent goals and aims. In this, the great actress Holly Hunter plays Penny, a character who is seen as property by the male character Everett. 
+
+<iframe width="679" height="382" src="https://www.youtube.com/embed/_dl2L4v6ecM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+According to the imdb data, the 2000’s were not the kindest years for women with the media representation of the time. In the year 2000, the few top ten movies that do portray female representation are the lowest rated. Every other top ten movie that year is male focused and depicts women as objects. 
+
+```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
+SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2000
+ORDER BY movie_rating DESC
+LIMIT 0,10;
+```
+
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 new_df1_plot <- ggplot(new_df1, aes(x = title, y = movie_rating, fill = pass_test)) +
 geom_col()+
 geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjust = -0.5)
   
 new_df1_plot
+```
+
+However, eight years later, female representation begins to improve, if marginally. In 2008, The Showdown is one of two films that passes the test that year. It shares equal ratings with The Dark Knight, another 2008 film that does not pass the test. The only other movie that year to pass the test was Seven Pounds and it experienced the lowest ratings among the top ten movies. 
+
+```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
+SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2008
+ORDER BY movie_rating DESC
+LIMIT 0,10;
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
@@ -185,6 +153,25 @@ geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 3, vjus
 new_df2_plot
 ```
 
+Finally, another eight years later, the representation of women improves dramatically. In 2016, not only do the majority of the top ten IMDB rated movies pass the test, but these movies are also the movies with the highest ratings. While the majority of the 2008 movies that failed the test were violent, in 2016, the majority of the movies that did pass the test were nonviolent. 
+
+```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
+SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2016
+ORDER BY movie_rating DESC
+LIMIT 0,10;
+```
+
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 new_df3_plot <- ggplot(new_df3, aes(x = title, y = movie_rating, fill = pass_test)) +
 geom_col() +
@@ -192,3 +179,11 @@ geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjus
 
 new_df3_plot
 ```
+
+  At this point, we must take into account that how we interpret our data may be influenced by the fact that, as time goes on, technology advances. With this, higher quality movies are being produced and, in turn, ratings increase. Thus, past movies with positive representation of women may not have been been rated as highly due to the lower production quality. 
+ 
+ 
+  One interesting thing to note is the fact that the movies in 2016 that show positive female representation, score higher than the top rated movies of 2000 which did not have good representation. This could be explained by the fact that good women characters make movies better but it could also be true that the production value is just higher. For example, in 2000, no movies score higher than 7.8 but in 2016, all of the movies that pass the test score 7.9 or higher. Only two movies in 2008 score higher than 7.9. The movie “The Showdown” scored 9.0 and the movie “Seven Pounds” scored 7.7. This means 50% of the movies that passed the test in 2008 scored fairly high. The percentage of the movies that didnt pass the test in 2008 that scored high ratings is only 25%. 
+
+
+  Although we see the representation of women rise in 2016, progress is still necessary. With every movie we examined, men were always positively represented. This shows that it is possible to consistently positively represent one gender identity and means that it can and should be done for woman as well. 
