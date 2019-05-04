@@ -1,10 +1,8 @@
 ---
 title: Hey Hollywood, Where are the Women?
 author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
-output: html_document
-theme: flatly
-fig_width: 7
-df_print: paged
+output: 
+   html_document: 
 code_folding: hide
 ---
 
