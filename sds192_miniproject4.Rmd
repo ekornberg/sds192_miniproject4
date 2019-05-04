@@ -11,7 +11,6 @@ code_folding: hide
 #Hey Hollywood, Where are the Women?
 Date: `r format(Sys.Date(), "%B %e, %Y")`
 
-<<<<<<< HEAD
   In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the [first female speaker of the House](https://www.history.com/this-day-in-history/nancy-pelosi-named-speaker-of-the-house-2004), while in 2016, Hillary Clinton became the [first female presidential candidate](https://www.nbcnews.com/storyline/2016-conventions/hillary-clinton-becomes-first-female-nominee-major-u-s-political-n617406) nominated by a major political party. In 2009, the [Lilly Ledbetter Fair Pay Restoration Act](http://lillyledbetter.com/) helped women file government complaints for pay discrimination, and in 2013, [women first entered combat positions](https://www.nytimes.com/2013/01/24/us/pentagon-says-it-is-lifting-ban-on-women-in-combat.html) in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media. However, this is not the case. 
 
   Pixar did not have a film with a [female lead until 2012](http://reelgirl.com/2011/07/coming-in-2012-pixars-first-female-lead-25-year-history/). In 2017, only 31.8% characters in the top 100 films were [female speaking roles](http://assets.uscannenberg.org/docs/inequality-in-1100-popular-films.pdf). According to a recent US study, the female to male role ratio is [1:3 in family friendly films](https://www.theguardian.com/women-in-leadership/2013/nov/12/media-representation-matters). In this, only 4.5% of those females represented held positions of political power. As filmmaker [Rebecca Brand writes](https://www.theguardian.com/women-in-leadership/2013/nov/12/media-representation-matters) for The Guardian, “[The people we see on screen] help to shape who we are, who we aspire to be, and how we view the world around us.” She suggests, “if she can't see it, she can't be it.” While this is not entirely true, Brand’s statement does carry some weight -- if young girls do not see examples of women doing amazing things, how would they know that these opportunities are available to them? How can they continue the fight for equality?
@@ -48,8 +47,7 @@ PASSES!!!
 DOES NOT PASS!!! 
 <iframe width="679" height="382" src="https://www.youtube.com/embed/_dl2L4v6ecM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-=======
->>>>>>> e01d161f8c8277d9086d918c1288a038dbe93345
+
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 library(tidyverse)
 library(RMySQL)
