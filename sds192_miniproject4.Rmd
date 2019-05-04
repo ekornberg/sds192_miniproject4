@@ -25,6 +25,7 @@ DOES NOT PASS!!!
 library(tidyverse)
 library(RMySQL)
 library(here)
+library(ggrepel)
 
 db <- dbConnect(MySQL(), 
                 host = "scidb.smith.edu", 
@@ -73,12 +74,11 @@ LIMIT 0,10;
 
 #2016
 ```{sql connection= db, warning = FALSE, message = FALSE, echo = FALSE}
-SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating, n.gender
+SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
 FROM title t 
 JOIN movie_info mi ON mi.movie_id = t.id
 JOIN movie_info mi2 ON mi2.movie_id = t.id
 JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
-JOIN name n ON n.md5sum = t.md5sum
 WHERE mi.info_type_id IN (67, 97) 
   AND mi.info LIKE '%PG-13%'
   AND kind_id = 1
@@ -94,15 +94,86 @@ LIMIT 0,10;
 ratings <- read_csv(here::here("Movie_test.csv"))
 ```
 
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+df1 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2000
+ORDER BY movie_rating DESC
+LIMIT 0,10;")
 
-```{r warning = FALSE, message = FALSE, echo = FALSE}
-new_ratings <- as.tbl(ratings) %>% 
-  filter( year == 2000) 
-  
-  
-new_plot <- ggplot(new_ratings, aes(x=title, y= 'imdb rating'))+
-  geom_col() 
-
-new_plot  
+new_df1 <- df1 %>%
+  mutate(pass_test = c("FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "TRUE", "TRUE"))
 ```
 
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+df2 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2008
+ORDER BY movie_rating DESC
+LIMIT 0,10;")
+
+new_df2 <- df2 %>%
+  mutate(pass_test = c("FALSE", "TRUE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "FALSE", "TRUE"))
+```
+
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+df3 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
+FROM title t 
+JOIN movie_info mi ON mi.movie_id = t.id
+JOIN movie_info mi2 ON mi2.movie_id = t.id
+JOIN movie_info_idx AS mi3 ON mi3.movie_id = t.id
+WHERE mi.info_type_id IN (67, 97) 
+  AND mi.info LIKE '%PG-13%'
+  AND kind_id = 1
+  AND mi2.info_type_id = 4
+  AND mi3.info_type_id = 101
+  AND mi2.info = 'English'
+  AND production_year = 2016
+ORDER BY movie_rating DESC
+LIMIT 0,10;")
+
+new_df3 <- df3 %>%
+  mutate(pass_test = c("TRUE", "FALSE", "TRUE", "TRUE", "TRUE", "FALSE", "TRUE", "TRUE", "FALSE", "TRUE"))
+```
+
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+new_df1_plot <- ggplot(new_df1, aes(x = title, y = movie_rating, fill = pass_test)) +
+geom_col()+
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjust = -0.5)
+  
+new_df1_plot
+```
+
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+new_df2_plot <- ggplot(new_df2, aes(x = title, y = movie_rating, fill = pass_test)) +
+geom_col()+
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 3, vjust = -1)
+
+new_df2_plot
+```
+
+```{r message = FALSE, echo = FALSE, warning = FALSE}
+new_df3_plot <- ggplot(new_df3, aes(x = title, y = movie_rating, fill = pass_test)) +
+geom_col() +
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjust = -0.5)
+
+new_df3_plot
+```
