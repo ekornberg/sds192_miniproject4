@@ -25,6 +25,7 @@ DOES NOT PASS!!!
 library(tidyverse)
 library(RMySQL)
 library(here)
+library(ggrepel)
 
 db <- dbConnect(MySQL(), 
                 host = "scidb.smith.edu", 
@@ -155,21 +156,24 @@ new_df3 <- df3 %>%
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 new_df1_plot <- ggplot(new_df1, aes(x = title, y = movie_rating, fill = pass_test)) +
-geom_col()
+geom_col()+
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjust = -0.5)
   
 new_df1_plot
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 new_df2_plot <- ggplot(new_df2, aes(x = title, y = movie_rating, fill = pass_test)) +
-geom_col()
+geom_col()+
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 3, vjust = -1)
 
 new_df2_plot
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
 new_df3_plot <- ggplot(new_df3, aes(x = title, y = movie_rating, fill = pass_test)) +
-geom_col() 
+geom_col() +
+geom_label_repel(aes(x = title, y = movie_rating, label = title), size = 4, vjust = -0.5)
 
 new_df3_plot
 ```
