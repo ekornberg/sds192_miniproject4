@@ -1,5 +1,5 @@
 ---
-title: Hey Hollywood, Where are the Women?
+title: "SDS 192 Mini Project 4"
 author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
 output: html_document
 theme: flatly
@@ -8,6 +8,7 @@ df_print: paged
 code_folding: hide
 ---
 
+#Hey Hollywood, Where are the Women?
 Date: `r format(Sys.Date(), "%B %e, %Y")`
 
   In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the [first female speaker of the House](https://www.history.com/this-day-in-history/nancy-pelosi-named-speaker-of-the-house-2004), while in 2016, Hillary Clinton became the [first female presidential candidate](https://www.nbcnews.com/storyline/2016-conventions/hillary-clinton-becomes-first-female-nominee-major-u-s-political-n617406) nominated by a major political party. In 2009, the [Lilly Ledbetter Fair Pay Restoration Act](http://lillyledbetter.com/) helped women file government complaints for pay discrimination, and in 2013, [women first entered combat positions](https://www.nytimes.com/2013/01/24/us/pentagon-says-it-is-lifting-ban-on-women-in-combat.html) in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media. However, this is not the case. 
@@ -21,6 +22,16 @@ Date: `r format(Sys.Date(), "%B %e, %Y")`
   Now, more than ever, positive and intersectional female representation is incredibly important. While it should not take away from making systemic change, it should also not be dismissed from attention. When media already shapes the minds of young and impressionable consumers, why not shape them in a way that empowers them and leads to real, everyday change?
 
 
+
+
+Problem Statement & Research Question:
+There is a lack of positive female representation in popular movies of the last two decades. Is there a correlation between positive female representation, as decided using the Mako Mori Test, and IMDB movie ratings over time?
+
+Hypothesis & Argument:
+If we examine the top ten IMDB rated movies for the years 2000, 2008, and 2016, we will find that there is low positive female representation, or few movies that pass the Mako Mori Test, but that female representation will increase over the years.
+
+Null Hypothesis & Counter Argument:
+Given our time and experiential constraints, the scope of our data we are looking at is severely limited -- we are only looking at the (1) top ten movies (2) rated in IMDB (3) for three years. We are also measuring positive female representation through the Mako Mori Test, which, given its narrow parameters, is only one way to consider the subject matter and is not the ultimate ruling on positive female representation in media. Because of this limited scope, this examination cannot fully determine whether there is low positive female representation in popular films, nor whether there exists an upward trend in this.
 
 
 
