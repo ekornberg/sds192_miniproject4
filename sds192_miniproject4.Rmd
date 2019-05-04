@@ -1,16 +1,31 @@
 ---
 title: Hey Hollywood, Where are the Women?
 author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
-output:
-prettydoc::html_pretty:
+output: html_document
 theme: flatly
-highlight: github
 fig_width: 7
 df_print: paged
 code_folding: hide
 ---
 
-The date is `r format(Sys.Date(), "%B %e, %Y")`
+Date: `r format(Sys.Date(), "%B %e, %Y")`
+
+  In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the first female speaker of the House, while in 2016, Hillary Clinton became the first female presidential candidate nominated by a major political party. In 2009, the Lilly Ledbetter Fair Pay Restoration Act helped women file government complaints for pay discrimination, and in 2013, women first entered combat positions in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media. However, this is not the case. 
+
+  Pixar did not have a film with a female lead until 2012. In 2017, only 31.8% characters in the top 100 films were female speaking roles. According to a recent US study, the female to male role ratio is 1:3 in family friendly films. In this, only 4.5% of those females represented held positions of political power. As filmmaker Rebecca Brand writes for The Guardian, “[The people we see on screen] help to shape who we are, who we aspire to be, and how we view the world around us.” She suggests, “if she can't see it, she can't be it.” While this is not entirely true, Brand’s statement does carry some weight -- if young girls do not see examples of women doing amazing things, how would they know that these opportunities are available to them? How can they continue the fight for equality?
+
+  Some believe that media representation is frivolous and unnecessary. They claim that filmmakers’ artificially insertion of women into movies is simply a display of pandering. They say that with today’s meritocracy, we already have equality and that we do not need to force diversity. Some more progressive critics even argue that legislation and systemic change is much more important than media representation. 
+
+  However, depicting women in movies is not forced diversity -- it is a reflection of actual everyday life in which women make up more than half of the population. Given the continued lack of representation of women in media, politics, and other central institutions of power, equality is still very much in the distance. This even more so for females of other minority groups, including women of color, disabled women, LGBTQ+ women, low-income women, etc. Furthermore, while it cannot be denied that legislation and systemic change is incredibly important, it cannot be denied that who we see on screen affects how we see ourselves and others. With this, many believe that the two go hand in hand -- positive systemic progress brings about positive media representation, which in turn promotes further systemic change. 
+
+  Now, more than ever, positive and intersectional female representation is incredibly important. While it should not take away from making systemic change, it should also not be dismissed from attention. When media already shapes the minds of young and impressionable consumers, why not shape them in a way that empowers them and leads to real, everyday change?
+
+
+
+
+
+
+
 
 ##What is the Mako Mori Test?
 Named after a "Pacific Rim" character, the Mako Mori test proposes an alternative to the Bechdel test. This test focuses not on women conversing with each other, but with the story of at least one woman. The rules of the test are that the movie must have at least one female character, that character must get her own narrative arc, and the arc cannot be about the man's story. While people still argue over whether or not "Pacific Rim" was feminist or not, the test hold a great potential. Think about female characters you've seen in movies recently, how many of them had stories outside being romantically involved with the male lead?
