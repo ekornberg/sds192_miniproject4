@@ -84,34 +84,46 @@ new_df3 <- df3 %>%
   mutate(pass_test = c("TRUE", "FALSE", "TRUE", "TRUE", "TRUE", "FALSE", "TRUE", "TRUE", "FALSE", "TRUE"))
 ```
 
-
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
-new_df1_plot <- ggplot(new_df1, aes(x = title, y = movie_rating, fill = pass_test)) +
+new_df1_plot <- ggplot(new_df1, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test)) +
+coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col()+
 geom_label_repel(aes(label = title), size = 2, vjust = -0.5) +
   labs(title = 2000, y = "imdb ratings") +
-  theme(axis.text.x =element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank()) 
+  theme(axis.text.x =element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank()) +
+  geom_tile(alpha = 0) +
+  guides(fill = guide_legend(override.aes = list(alpha = 1)))
+  
+
+
 new_df1_plot
 ```
 
-
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
-new_df2_plot <- ggplot(new_df2, aes(x = title, y = movie_rating, fill = pass_test)) +
+new_df2_plot <- ggplot(new_df2, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test)) +
+coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col()+
 geom_label_repel(aes( label = title), size = 2, vjust = -1) +
   labs(title = 2008, y = "imdb ratings") +
-  theme(axis.text.x =element_blank(), axis.title.x = element_blank(),axis.ticks.x = element_blank())  
+  theme(axis.text.x =element_blank(), axis.title.x = element_blank(),axis.ticks.x = element_blank())+
+  geom_tile(alpha = 0) +
+  guides(fill = guide_legend(override.aes = list(alpha = 1)))
+
    
 
 new_df2_plot
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
-new_df3_plot <- ggplot(new_df3, aes(x = title, y = movie_rating, fill = pass_test )) +
+new_df3_plot <- ggplot(new_df3, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test )) +
+coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col() +
 geom_label_repel(aes( label = title), size = 2, vjust = -0.5)+
-  labs(title = 2016, y = "imdb ratings") +
-  theme(axis.text.x =element_blank(), axis.title.x = element_blank(),axis.ticks.x = element_blank()) 
+  labs(title = 2016, y = "imdb ratings", fill = "passes test?") +
+  theme(axis.text.x =element_blank(), axis.title.x = element_blank()) +
+  geom_tile(alpha = 0) +
+  guides(fill = guide_legend(override.aes = list(alpha = 1)))
+ 
 
 
 new_df3_plot
@@ -120,7 +132,7 @@ new_df3_plot
 
 ![](https://cdn1.thr.com/sites/default/files/imagecache/list_landscape_960x541/2016/12/39a_characters_01_flat-h_2016.jpg)
 
- In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the first female speaker of the House, while in 2016, Hillary Clinton became the first female presidential candidate nominated by a major political party. In 2009, the Lilly Ledbetter Fair Pay Restoration Act helped women file government complaints for pay discrimination, and in 2013, women first entered combat positions in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media and increased appreciation for such forms of entertainment. Does this hold true in reality? 
+In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the first female speaker of the House, while in 2016, Hillary Clinton became the first female presidential candidate nominated by a major political party. In 2009, the Lilly Ledbetter Fair Pay Restoration Act helped women file government complaints for pay discrimination, and in 2013, women first entered combat positions in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media and increased appreciation for such forms of entertainment. Does this hold true in reality? 
 
 
 Let us consider the top ten PG-13 rated movies produced in the years 2000, 2008 and 2016, from the [Internet Movie Database](https://www.imdb.com/pressroom/about/), or the imdb. Given that media representation most affects young, developing minds, PG-13 rated movies are integral to this investigation as their target audience, middle school-aged teenagers, are beginning to explore their sexuality and identity. With this, female representation in popular media is deeply influential in the [development of the sense of self] (https://www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d). Furthermore, the way women are represented in these movies affects how young females view themselves and how young males view them, bringing the issue into the real world. As we examine today’s media representation and its change over time, the three years of focus are key because they are each roughly a generation apart, and can thus help assess the progress made. 
@@ -152,10 +164,10 @@ However, eight years later, female representation begins to improve, if marginal
 Finally, another eight years later, the representation of women improves dramatically. In 2016, not only do the majority of the top ten IMDB rated movies pass the test, but these movies are also the movies with the highest ratings. While the majority of the 2008 movies that failed the test were violent, in 2016, the majority of the movies that did pass the test were nonviolent. 
 
 
-  At this point, we must take into account that how we interpret our data may be influenced by the fact that, as time goes on, technology advances. With this, higher quality movies are being produced and, in turn, ratings increase. Thus, past movies with positive representation of women may not have been been rated as highly due to the lower production quality. 
+At this point, we must take into account that how we interpret our data may be influenced by the fact that, as time goes on, technology advances. With this, higher quality movies are being produced and, in turn, ratings increase. Thus, past movies with positive representation of women may not have been been rated as highly due to the lower production quality. 
  
  
-  One interesting thing to note is the fact that the movies in 2016 that show positive female representation, score higher than the top rated movies of 2000 which did not have good representation. This could be explained by the fact that good women characters make movies better but it could also be true that the production value is just higher. For example, in 2000, no movies score higher than 7.8 but in 2016, all of the movies that pass the test score 7.9 or higher. Only two movies in 2008 score higher than 7.9. The movie “The Showdown” scored 9.0 and the movie “Seven Pounds” scored 7.7. This means 50% of the movies that passed the test in 2008 scored fairly high. The percentage of the movies that didnt pass the test in 2008 that scored high ratings is only 25%. 
+One interesting thing to note is the fact that the movies in 2016 that show positive female representation, score higher than the top rated movies of 2000 which did not have good representation. This could be explained by the fact that good women characters make movies better but it could also be true that the production value is just higher. For example, in 2000, no movies score higher than 7.8 but in 2016, all of the movies that pass the test score 7.9 or higher. Only two movies in 2008 score higher than 7.9. The movie “The Showdown” scored 9.0 and the movie “Seven Pounds” scored 7.7. This means 50% of the movies that passed the test in 2008 scored fairly high. The percentage of the movies that didnt pass the test in 2008 that scored high ratings is only 25%. 
 
 
-  Although we see the representation of women rise in 2016, progress is still necessary. With every movie we examined, men were always positively represented. This shows that it is possible to consistently positively represent one gender identity and means that it can and should be done for woman as well. 
+Although we see the representation of women rise in 2016, progress is still necessary. With every movie we examined, men were always positively represented. This shows that it is possible to consistently positively represent one gender identity and means that it can and should be done for woman as well. 
