@@ -1,8 +1,9 @@
 ---
 title: Hey Hollywood, Where are the Women?
 author: Vatsala Ramanan, Margaret Bassney, and Emma Kornberg
-output: 
-   html_document: 
+output:
+  rmarkdown::html_document:
+    theme: journal
 code_folding: hide
 ---
 
@@ -14,6 +15,7 @@ library(RMySQL)
 library(here)
 library(ggrepel)
 library(gridExtra)
+library(rmarkdown)
 
 db <- dbConnect(MySQL(), 
                 host = "scidb.smith.edu", 
@@ -119,55 +121,75 @@ new_df3_plot <- ggplot(new_df3, aes(x = title, y = as.numeric(as.character(movie
 coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col() +
 geom_label_repel(aes( label = title), size = 2, vjust = -0.5)+
-  labs(title = 2016, y = "imdb ratings", fill = "passes test?") +
-  theme(axis.text.x =element_blank(), axis.title.x = element_blank()) +
+  theme(axis.text.x =element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank()) +
+   labs(title = 2016, y = "imdb ratings", fill = "passes test?") +
   geom_tile(alpha = 0) +
   guides(fill = guide_legend(override.aes = list(alpha = 1)))
- 
 
 
 new_df3_plot
 ```
 
 
-![](https://cdn1.thr.com/sites/default/files/imagecache/list_landscape_960x541/2016/12/39a_characters_01_flat-h_2016.jpg)
-
-In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the first female speaker of the House, while in 2016, Hillary Clinton became the first female presidential candidate nominated by a major political party. In 2009, the Lilly Ledbetter Fair Pay Restoration Act helped women file government complaints for pay discrimination, and in 2013, women first entered combat positions in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media and increased appreciation for such forms of entertainment. Does this hold true in reality? 
+![](https://media.giphy.com/media/10THwIEei6Tn7a/giphy.gif)
 
 
-Let us consider the top ten PG-13 rated movies produced in the years 2000, 2008 and 2016, from the [Internet Movie Database](https://www.imdb.com/pressroom/about/), or the imdb. Given that media representation most affects young, developing minds, PG-13 rated movies are integral to this investigation as their target audience, middle school-aged teenagers, are beginning to explore their sexuality and identity. With this, female representation in popular media is deeply influential in the [development of the sense of self] (https://www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d). Furthermore, the way women are represented in these movies affects how young females view themselves and how young males view them, bringing the issue into the real world. As we examine today’s media representation and its change over time, the three years of focus are key because they are each roughly a generation apart, and can thus help assess the progress made. 
+With the recent release of Captain Marvel, young women are  discussing the importance of having strong, badass female characters in popular films. Even so much as ten years ago, a female lead like Carol Danvers would have been unthinkable. With this in mind, we wondered what female representation in Hollywood actually looks like and how it has changed over time.
 
-##How do we know if a movie truly represents women?
+##Is Hollywood the teacup that contains society’s storm?
 
-Female representation is a rather subject concept. So, to determine whether movies portray women with substantial importance, we refer to the [Mako Mori Test](www.dailydot.com/parsec/fandom/mako-mori-test-bechdel-pacific-rim/). Named after a Pacific Rim character, the Mako Mori test proposes an alternative to the popular Bechdel test. This test focuses not on women conversing with each other as the Bechdel test does, but on the story of at least one woman. The rules of the test are that (1) the movie must have at least one female character, (2) that character must get her own narrative arc, and (3) the arc cannot be dependent on the man’s story. While people still argue over whether or not “Pacific Rim” was feminist or not, the test has great potential. 
-For example, Emma Stone’s character from the 2016 movie La La Land passes the test as she has an independent narrative arc which focuses on her ambitions to be an actor. Here’s a scene from the movie showing this:
+In the past twenty years, women in the United States have made great strides towards equality and representation. In 2007, Representative Nancy Pelosi became the [first female speaker of the House](https://www.history.com/this-day-in-history/nancy-pelosi-named-speaker-of-the-house-2004), while in 2016, Hillary Clinton became the [first female presidential candidate](https://www.nbcnews.com/storyline/2016-conventions/hillary-clinton-becomes-first-female-nominee-major-u-s-political-n617406) nominated by a major political party. In 2009, the [Lilly Ledbetter Fair Pay Restoration Act](http://lillyledbetter.com/) helped women file government complaints for pay discrimination, and in 2013, [women first entered combat positions](https://www.nytimes.com/2013/01/24/us/pentagon-says-it-is-lifting-ban-on-women-in-combat.html) in the U.S. military. With all these monumental successes, one would expect a reflection of this with positive female representation in popular media and increased appreciation for such forms of entertainment. However, does this hold true in reality? 
+
+Although we see that women have made great strides, there still exists bias against them. For example, many people did not vote Hillary Clinton for president simply because she was a woman. We may expect Hollywood to mirror this general political sentiment. When more women joined Washington, a male backlash likely contributed to Hillary Clinton’s loss. Similarly, an increase in female representation in media may lead to a male backlash and ratings may ultimately fall. Because of this, we predict that when the representation of women in movies increases over the years, ratings from the [Internet Movie Database](https://www.imdb.com/pressroom/about/), or the IMDB, will fall. 
+
+
+
+
+##But, wait, how do you measure female representation?
+
+Before looking at the data, we must define the key terms of our investigation...
+
+Female representation is a rather subjective concept. So, to determine whether movies portray women with substantial importance, we refer to the [Mako Mori test](www.dailydot.com/parsec/fandom/mako-mori-test-bechdel-pacific-rim/), which is named after *Pacific Rim* character Mako Mori. The rules of the test are that (1) the movie must have at least one female character, (2) that character must get her own narrative arc, and (3) the arc cannot be dependent on the man’s story. While people still argue over whether or not “Pacific Rim” was feminist or not, the test has great potential. 
+
+###Examples
+
+Emma Stone’s character from the 2016 movie *La La Land* passes the test as she has an independent narrative arc which focuses on her ambitions to be an actor. Here’s a scene from the movie showing this:
 
 <iframe width="679" height="382" src="https://www.youtube.com/embed/SL_YMm9C6tw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-However, the movie O Brother Where Art Thou? fails the test. As shown in the scene below, the women do nothing more than seduce the male protagonists of the movie and do not have independent goals and aims. In this, the great actress Holly Hunter plays Penny, a character who is seen as property by the male character Everett. 
+However, the movie *O Brother Where Art Thou?* fails the test. As shown in the scene below, the women do nothing more than seduce the male protagonists of the movie and do not have independent goals and aims. In this scene, the great actress Holly Hunter plays Penny, a character who is seen as property by the male character Everett. 
 
 <iframe width="679" height="382" src="https://www.youtube.com/embed/_dl2L4v6ecM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-##What does the data tell us? 
 
+
+##What data are we are looking at?
+
+Let us consider the top ten PG-13 rated movies produced in the years 2000, 2008 and 2016, from the IMDB. Given that media representation most affects young, developing minds, PG-13 rated movies are integral to this investigation as their target audience, middle school-aged teenagers, are beginning to explore their sexuality and identity. With this, female representation in popular media is deeply influential in the [development of the sense of self] (https://www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d). Furthermore, the way women are represented in these movies affects how young females view themselves and how young males view them, bringing the issue into the real world. As we examine today’s media representation and its change over time, the three years of focus are key because they are each roughly a generation apart, and can thus help assess the progress made. Finally, we examine English language films as we focus on Hollywood, a structure that produces majority English films. Additionally, these films are most familiar to us and, you, our readers.
+
+
+##So, what’s the truth? What does the data say?
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE }
 grid.arrange(new_df1_plot, new_df2_plot, new_df3_plot, ncol=1 )
 ```
 
-According to the imdb data, the early 2000’s were not the kindest years for women with the media representation of the time. In the year 2000, the few top ten movies that do portray female representation are the lowest rated. Every other top ten movie that year is male focused and depicts women as objects. 
+In the past two decades, female representation has increased between 2000 and 2016. In 2000, 2 of the top 10 movies passed the test, then 2 of 10 again in 2008, and finally 7 of ten in 2016. In this, there is no steady rise in media representation, and rather more of a recent jump. This may have to do with the advent of social media in which women are easily able to access platforms where their voices can be heard. Thus, women could be better able to advocate for what they want to see in Hollywood. 
+
+Does this rise in female representation in popular films correlate with falling ratings? Although there is some speculative evidence that suggests this is a possibility, the data shows that IMDB ratings have risen along with increased media representation. In 2000, the two movies with female representation were rated lower than the movies that did not have any. Then, in 2008, one of the two movies with female representation shared a 9.0, the highest IMDB rating that year, with *The Dark Knight*, a movie that did not have any positive female representation. Finally, in 2016, the movies with female representation had comparable, if not higher, ratings as the movies without female representation had. This positive correlation in representation and ratings may be because women enjoy movies they see themselves positively represented in and so they give the movies higher ratings. 
+
+##But...wait...
+Although we said that the data shows that there has been a general increase in female representation in PG-13 movies over the years, it cannot be forgotten that we only looked at the top rated movies from the IMDB. The scope of our data was fairly limited, given the parameters we set. However, IMDB ratings are based on popularity and as it is the largest movie database platform, these ratings likely indicate how audiences and society at large feel about the films. Therefore, it is fair to assess that there has been an increase in female representation in PG-13 movies.
 
 
-However, eight years later, female representation begins to improve, if marginally. In 2008, The Showdown is one of two films that passes the test that year. It shares equal ratings with The Dark Knight, another 2008 film that does not pass the test. The only other movie that year to pass the test was Seven Pounds and it experienced the lowest ratings among the top ten movies. 
+It could also be argued that increased female representation does not correlate with higher IMDB ratings as outside factors play a role. Between the years 2000 and 2016, numerous technological and political changes occurred. As a result, the ratings for all the movies, not just the ones with women, rose. This can be seen in the data as the highest movie rating in 2000 was 7.8, while in 2016 it was a much higher 8.8. 
+
+However, if increased ratings are a consequence of larger societal changes, then the data would show a relatively constant increase in ratings among all movies. Instead, we see that ratings for movies with substantial female representation are increasing at a higher rate than those without representation. Given that the only differences among the movies is the representation of women, it cannot be said that female representation does not impact ratings.
 
 
-Finally, another eight years later, the representation of women improves dramatically. In 2016, not only do the majority of the top ten IMDB rated movies pass the test, but these movies are also the movies with the highest ratings. While the majority of the 2008 movies that failed the test were violent, in 2016, the majority of the movies that did pass the test were nonviolent. 
 
+##So where do we go from here?
 
-At this point, we must take into account that how we interpret our data may be influenced by the fact that, as time goes on, technology advances. With this, higher quality movies are being produced and, in turn, ratings increase. Thus, past movies with positive representation of women may not have been been rated as highly due to the lower production quality. 
- 
- 
-One interesting thing to note is the fact that the movies in 2016 that show positive female representation, score higher than the top rated movies of 2000 which did not have good representation. This could be explained by the fact that good women characters make movies better but it could also be true that the production value is just higher. For example, in 2000, no movies score higher than 7.8 but in 2016, all of the movies that pass the test score 7.9 or higher. Only two movies in 2008 score higher than 7.9. The movie “The Showdown” scored 9.0 and the movie “Seven Pounds” scored 7.7. This means 50% of the movies that passed the test in 2008 scored fairly high. The percentage of the movies that didnt pass the test in 2008 that scored high ratings is only 25%. 
+We’ve seen that Hollywood is slowly beginning to embrace the value of strong female characters in cinema. Nonetheless, there is a long way to go in terms of industry inclusivity -- we need to see more people of color, LGBTQ+ folks, and characters of many other minority groups who make up integral parts of our country. Here’s to hoping that change and growth continue to happen! On that note, take this [quiz](https://www.buzzfeed.com/jamiejirak1/everyone-has-a-badass-female-character-that-matches-their) and find out which badass Hollywood female character you are!
 
-
-Although we see the representation of women rise in 2016, progress is still necessary. With every movie we examined, men were always positively represented. This shows that it is possible to consistently positively represent one gender identity and means that it can and should be done for woman as well. 
+![](https://media.giphy.com/media/4npOvK1bTHpYs/giphy.gif) 
