@@ -10,6 +10,7 @@ code_folding: hide
 Date: `r format(Sys.Date(), "%B %e, %Y")`
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
+# loading necessary packages 
 library(tidyverse)
 library(RMySQL)
 library(here)
@@ -27,6 +28,7 @@ knitr::opts_chunk$set(connection = db, max.print = 20)
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
+# table for 2000 
 df1 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
 FROM title t 
 JOIN movie_info mi ON mi.movie_id = t.id
@@ -47,6 +49,7 @@ new_df1 <- df1 %>%
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
+# table for 2008 
 df2 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
 FROM title t 
 JOIN movie_info mi ON mi.movie_id = t.id
@@ -67,6 +70,7 @@ new_df2 <- df2 %>%
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE}
+# data for 2016  
 df3 <- dbGetQuery(db, "SELECT t.title, t.production_year, mi.info as rating, mi2.info as language,mi3.info AS movie_rating
 FROM title t 
 JOIN movie_info mi ON mi.movie_id = t.id
@@ -87,6 +91,7 @@ new_df3 <- df3 %>%
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
+# graph for 2000 data 
 new_df1_plot <- ggplot(new_df1, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test)) +
 coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col()+
@@ -102,6 +107,7 @@ new_df1_plot
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
+# 2008 graph 
 new_df2_plot <- ggplot(new_df2, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test)) +
 coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col()+
@@ -117,6 +123,7 @@ new_df2_plot
 ```
 
 ```{r message = FALSE, echo = FALSE, warning = FALSE, include = FALSE}
+# graph for 2016
 new_df3_plot <- ggplot(new_df3, aes(x = title, y = as.numeric(as.character(movie_rating)), fill = pass_test )) +
 coord_cartesian(ylim = seq(7,9.5,.5))+
 geom_col() +
@@ -193,3 +200,7 @@ However, if increased ratings are a consequence of larger societal changes, then
 We’ve seen that Hollywood is slowly beginning to embrace the value of strong female characters in cinema. Nonetheless, there is a long way to go in terms of industry inclusivity -- we need to see more people of color, LGBTQ+ folks, and characters of many other minority groups who make up integral parts of our country. Here’s to hoping that change and growth continue to happen! On that note, take this [quiz](https://www.buzzfeed.com/jamiejirak1/everyone-has-a-badass-female-character-that-matches-their) and find out which badass Hollywood female character you are!
 
 ![](https://media.giphy.com/media/4npOvK1bTHpYs/giphy.gif) 
+*^[https://github.com/ekornberg/sds192_miniproject4.git]
+
+
+Word count: `r wordcountaddin::word_count()`
