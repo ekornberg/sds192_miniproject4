@@ -200,7 +200,22 @@ However, if increased ratings are a consequence of larger societal changes, then
 We’ve seen that Hollywood is slowly beginning to embrace the value of strong female characters in cinema. Nonetheless, there is a long way to go in terms of industry inclusivity -- we need to see more people of color, LGBTQ+ folks, and characters of many other minority groups who make up integral parts of our country. Here’s to hoping that change and growth continue to happen! On that note, take this [quiz](https://www.buzzfeed.com/jamiejirak1/everyone-has-a-badass-female-character-that-matches-their) and find out which badass Hollywood female character you are!
 
 ![](https://media.giphy.com/media/4npOvK1bTHpYs/giphy.gif) 
-*^[https://github.com/ekornberg/sds192_miniproject4.git]
 
 
+
+
+**Works Cited:**
+
+* [Bakar, Faima. “Representation in Film and TV Isn't Enough to Empower Minorities.” Metro, Metro.co.uk, 22 Mar. 2018, metro.co.uk/2018/03/22/representation-in-film-and-tv-isnt-enough-to-empower-minorities-7386618/.]
+* [Boboltz, Sara, et al. “Why On-Screen Representation Actually Matters.” HuffPost, HuffPost, 24 Feb. 2017, www.huffpost.com/entry/why-on-screen-representation-matters_n_58aeae96e4b01406012fe49d.]
+* [Burrunjor. “Why Representation Doesn't Matter And Saying It Does Is Harmful.” Burrunjorsramblesandbabbles, 31 Oct. 2018, burrunjor.com/2016/12/03/why-representation-doesnt-matter-and-saying-it-does-is-harmful/.]
+* [“Hillary Clinton Becomes First Female Nominee of Major U.S. Political Party.” NBCNews.com, NBCUniversal News Group, www.nbcnews.com/storyline/2016-conventions/hillary-clinton-becomes-first-female-nominee-major-u-s-political-n617406.]
+* [“The Lilly Ledbetter Fair Pay Act.” Lilly Ledbetter, lillyledbetter.com/.]
+* [“Nancy Pelosi Becomes First Female Speaker of the House.” History.com, A&E Television Networks, 6 Dec. 2018, www.history.com/this-day-in-history/nancy-pelosi-named-speaker-of-the-house-2004.]
+* [“Press Room.” IMDb, IMDb.com, www.imdb.com/pressroom/about/.]
+* [Romano, Aja. “The Mako Mori Test: 'Pacific Rim' Inspires a Bechdel Test Alternative.” The Daily
+Dot, The Daily Dot, 11 Dec. 2015, www.dailydot.com/parsec/fandom/mako-mori-test-bechdel-pacific-rim/.]
+* [Smith, Stacy L., and Marc Choueiti. “Inequality in 1,100 Popular Films: Examining Portrayals of Gender, Race/Ethnicity, LGBT & Disability from 2007 to 2017.” Assets.uscannenberg.org, Annenberg Foundation, July 2018, assets.uscannenberg.org/docs/inequality-in-1100-popular-films.pdf.]
+* [“Coming in 2012: Pixar's First Female Lead in 25 Year History.” Reel Girl, WordPress, 12 July 2011, reelgirl.com/2011/07/coming-in-2012-pixars-first-female-lead-25-year-history/.]
 Word count: `r wordcountaddin::word_count()`
+*^[https://github.com/ekornberg/sds192_miniproject4.git]
